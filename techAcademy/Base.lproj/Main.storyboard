@@ -1,24 +1,234 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yie-UA-pTi">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Home View Controller-->
+        <scene sceneID="uFd-4E-HN8">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController storyboardIdentifier="Home" id="bPm-mk-seb" userLabel="Home View Controller" customClass="HomeViewController" customModule="techAcademy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fjj-D6-HAe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="hWD-2K-Fxb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="Y8j-it-aLj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mox-eQ-b5A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-784" y="903"/>
+        </scene>
+        <!--Image Select View Controller-->
+        <scene sceneID="nMy-oG-CW1">
+            <objects>
+                <viewController storyboardIdentifier="ImageSelect" id="Siq-XG-eF5" userLabel="Image Select View Controller" customClass="ImageSelectViewController" customModule="techAcademy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d8Q-wC-Ucc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCT-iW-sJY">
+                                <rect key="frame" x="57" y="124" width="300" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="eP1-os-G54"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ライブラリ">
+                                    <backgroundConfiguration key="background" image="btn_2"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="handleLibraryButton:" destination="Siq-XG-eF5" eventType="touchUpInside" id="18H-gB-4sK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ox-TT-Vvn">
+                                <rect key="frame" x="57" y="165" width="300" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="NFD-5a-fnf"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="カメラ">
+                                    <backgroundConfiguration key="background" image="btn_2"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="handleCameraButton:" destination="Siq-XG-eF5" eventType="touchUpInside" id="VzB-nG-Mec"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hw-GX-usd">
+                                <rect key="frame" x="57" y="206" width="300" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="zDx-dt-AWc"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ファイル転送">
+                                    <backgroundConfiguration key="background" image="btn_2"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="handleCancelButton:" destination="Siq-XG-eF5" eventType="touchUpInside" id="x67-AN-5bF"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="result textfield" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BOg-jM-dw6">
+                                <rect key="frame" x="57" y="465" width="300" height="285"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvE-mM-ibr">
+                                <rect key="frame" x="57" y="269" width="300" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ya1-tS-5XV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jCT-iW-sJY" firstAttribute="centerX" secondItem="d8Q-wC-Ucc" secondAttribute="centerX" id="IPk-r7-toX"/>
+                            <constraint firstItem="2Ox-TT-Vvn" firstAttribute="top" secondItem="jCT-iW-sJY" secondAttribute="bottom" constant="10" id="OI3-Zb-TUG"/>
+                            <constraint firstItem="jCT-iW-sJY" firstAttribute="top" secondItem="Ya1-tS-5XV" secondAttribute="top" constant="80" id="ZVH-6x-VNB"/>
+                            <constraint firstItem="6hw-GX-usd" firstAttribute="top" secondItem="2Ox-TT-Vvn" secondAttribute="bottom" constant="10" id="kAX-OV-gT6"/>
+                            <constraint firstItem="2Ox-TT-Vvn" firstAttribute="centerX" secondItem="d8Q-wC-Ucc" secondAttribute="centerX" id="qoT-8G-Fk0"/>
+                            <constraint firstItem="6hw-GX-usd" firstAttribute="centerX" secondItem="d8Q-wC-Ucc" secondAttribute="centerX" id="teJ-Cf-ttT"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera" id="89G-2R-ilR"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="6hw-GX-usd" id="3gR-jx-zNi"/>
+                        <outlet property="imageView" destination="hvE-mM-ibr" id="i9a-ug-obI"/>
+                        <outlet property="textView" destination="BOg-jM-dw6" id="0Sa-pG-17z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rXk-qp-3ZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="903.34821428571422"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="3DB-TQ-ZA2">
+            <objects>
+                <viewController storyboardIdentifier="Login" id="PzF-gb-hs9" userLabel="Login View Controller" customClass="LoginViewController" customModule="techAcademy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AdW-1e-bf1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ZxW-dz-41u"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pS0-Av-Zjr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="132" y="1665"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="gbB-HB-SI3">
+            <objects>
+                <viewController storyboardIdentifier="Setting" id="Ozo-J2-xjs" userLabel="Setting View Controller" customClass="SettingViewController" customModule="techAcademy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l6e-sj-zUT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UCN-V4-4Nc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Setting" image="setting" id="AIL-gg-lYK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wdc-e3-bXs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1035" y="903"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="D8P-ab-9aW">
+            <objects>
+                <viewController storyboardIdentifier="Post" id="hGL-sU-lkW" userLabel="Post View Controller" customClass="PostViewController" customModule="techAcademy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YKE-v5-u0C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gBM-cB-GPQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="167"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfV-BR-i7a">
+                                <rect key="frame" x="20" y="774" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="TRj-hC-KcB"/>
+                                    <constraint firstAttribute="height" constant="48" id="ysp-5y-mJQ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="">
+                                    <backgroundConfiguration key="background" image="cancel"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="handleCancelButton:" destination="hGL-sU-lkW" eventType="touchUpInside" id="iqo-wh-Ry6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4m-Ze-reC">
+                                <rect key="frame" x="346" y="774" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="EiB-F6-QqU"/>
+                                    <constraint firstAttribute="width" constant="48" id="GCu-CD-Frf"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="">
+                                    <backgroundConfiguration key="background" image="save"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="handlePostButton:" destination="hGL-sU-lkW" eventType="touchUpInside" id="sib-fB-4lS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E34-Sw-WF4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rfV-BR-i7a" firstAttribute="leading" secondItem="E34-Sw-WF4" secondAttribute="leading" constant="20" id="aqo-Xe-hJy"/>
+                            <constraint firstItem="E34-Sw-WF4" firstAttribute="bottom" secondItem="w4m-Ze-reC" secondAttribute="bottom" constant="40" id="fjC-Yf-nqt"/>
+                            <constraint firstItem="E34-Sw-WF4" firstAttribute="bottom" secondItem="rfV-BR-i7a" secondAttribute="bottom" constant="40" id="jL6-uy-Bbh"/>
+                            <constraint firstItem="E34-Sw-WF4" firstAttribute="trailing" secondItem="w4m-Ze-reC" secondAttribute="trailing" constant="20" id="z8j-du-fEJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="gBM-cB-GPQ" id="Kv9-xR-km4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LVt-vj-wQn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1944.9275362318842" y="116.51785714285714"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="LkD-oJ-ggd">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Yie-UA-pTi" customClass="TabBarController" customModule="techAcademy" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J25-9N-Ljn">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="bPm-mk-seb" kind="relationship" relationship="viewControllers" id="lBm-cJ-TmA"/>
+                        <segue destination="Siq-XG-eF5" kind="relationship" relationship="viewControllers" id="fVo-If-pWb"/>
+                        <segue destination="Ozo-J2-xjs" kind="relationship" relationship="viewControllers" id="VEm-Fl-hOH"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QTj-p9-x16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_2" width="300" height="40"/>
+        <image name="camera" width="25" height="25"/>
+        <image name="cancel" width="40" height="40"/>
+        <image name="home" width="25" height="25"/>
+        <image name="save" width="40" height="40"/>
+        <image name="setting" width="25" height="25"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
