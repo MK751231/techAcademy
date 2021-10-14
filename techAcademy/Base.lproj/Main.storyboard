@@ -81,9 +81,15 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvE-mM-ibr">
-                                <rect key="frame" x="57" y="269" width="300" height="188"/>
+                                <rect key="frame" x="57" y="305" width="300" height="152"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aeF-co-pFU">
+                                <rect key="frame" x="57" y="254" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ya1-tS-5XV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -100,6 +106,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="6hw-GX-usd" id="3gR-jx-zNi"/>
                         <outlet property="imageView" destination="hvE-mM-ibr" id="i9a-ug-obI"/>
+                        <outlet property="textField" destination="aeF-co-pFU" id="0GZ-rL-QPp"/>
                         <outlet property="textView" destination="BOg-jM-dw6" id="0Sa-pG-17z"/>
                     </connections>
                 </viewController>

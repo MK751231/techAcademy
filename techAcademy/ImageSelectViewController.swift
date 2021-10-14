@@ -24,6 +24,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textField: UITextField!
     
     @IBAction func handleLibraryButton(_ sender: Any) {
         // ライブラリ（カメラロール）を指定してピッカーを開く
@@ -47,6 +48,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
 
         let imageJpgData = self.imageView.image!.jpegData(compressionQuality: 1)
         let textData = self.textView.text.data(using: .utf8)
+        let propertyCode = self.textField.text!.data(using: .utf8)
 
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
@@ -56,6 +58,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                 multipartFormData: { multipartFormData in
                     multipartFormData.append(imageJpgData!, withName: "upload_img_jpg" , fileName: "test01.jpg", mimeType: "image/jpeg")
                     multipartFormData.append(textData!, withName: "upload_txt" , fileName: "test01.txt", mimeType: "text/plain")
+                    multipartFormData.append(propertyCode!, withName: "upload_code" , fileName: "code.txt", mimeType: "text/plain")
                 },
                 to: "http://192.168.97.160/test2.php", method: .post
         )
