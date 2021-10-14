@@ -8,7 +8,7 @@
 import UIKit
 import Vision
 import VisionKit
-import Foundation
+import Alamofire
 
 //var propertyNameInput: Bool = false
 
@@ -45,38 +45,39 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func handleCancelButton(_ sender: Any) {
 
-        let url = NSURL(string: "http://192.168.97.160/test2.php")!
-        let imageJpgData = self.imageView.image?.jpegData(compressionQuality: 1)
+        let imageJpgData = self.imageView.image!.jpegData(compressionQuality: 1)
         let textData = self.textView.text.data(using: .utf8)
-        let request = URLRequest(multipartFormData: { (formData) in
-            formData.append(file: imageJpgData! , name: "upload_img_jpg", fileName: "test01.jpg", mimeType: "image/jpeg")
-            formData.append(file: textData! , name: "upload_txt", fileName: "test01.txt", mimeType: "text/plain" )
-            },
-            url: url as URL,
-            method: .post,
-            headers: [:])
 
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
         }
-        
-        let uploadTask = URLSession.shared.dataTask(with: request) { (data, res, err) in
-            if err != nil {
-                print("error=\(String(describing: err))")
-                return
-            }
-            if let res = res as? HTTPURLResponse {
-                print("respponse.statusCode = \(res.statusCode)")
-                self.statusCode = res.statusCode
-            }
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                if self.statusCode == 200 {
-                    self.dismiss(animated: true)
-                }
+
+        AF.upload(
+                multipartFormData: { multipartFormData in
+                    multipartFormData.append(imageJpgData!, withName: "upload_img_jpg" , fileName: "test01.jpg", mimeType: "image/jpeg")
+                    multipartFormData.append(textData!, withName: "upload_txt" , fileName: "test01.txt", mimeType: "text/plain")
+                },
+                to: "http://192.168.97.160/test2.php", method: .post
+        )
+        .response { resp in
+            switch resp.result {
+                case .success:
+                    print("response is:", resp)
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        // 正常終了メッセージ表示実装
+                        
+                        self.dismiss(animated: true)
+                    }
+                case let .failure(error):
+                    print(error)
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        // 異常終了メッセージ表示実装
+                        
+                    }
             }
         }
-        uploadTask.resume()
     }
     
     override func viewDidLoad() {
