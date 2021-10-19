@@ -9,6 +9,7 @@ import UIKit
 import Vision
 import VisionKit
 import Alamofire
+import RealmSwift
 
 //var propertyNameInput: Bool = false
 
@@ -19,7 +20,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
     var resultingText = ""
     var activityIndicator: UIActivityIndicatorView!
     var statusCode: Int = 0
-    
+    var imageUrl: URL!
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -69,6 +70,27 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                     DispatchQueue.main.async {
                         self.activityIndicator.stopAnimating()
                         // 正常終了メッセージ表示実装
+                        let realm = try! Realm()
+
+                        let taskArray = try! Realm().objects(Property.self).sorted(byKeyPath: "date", ascending: true)
+                        let newItem = Property()
+
+                        if realm.objects(Property.self).count != 0 {
+                            newItem.id = realm.objects(Property.self).max(ofProperty: "id")! + 1
+                        } else {
+                            newItem.id = 0
+                        }
+
+                        newItem.property = self.textField.text!
+                        newItem.url = self.imageUrl.absoluteString
+                        newItem.date = Date()
+                        newItem.text = self.textView.text!
+
+                        try! realm.write {
+                            realm.add(newItem)
+                        }
+
+                        print(taskArray[newItem.id])
                         
                         self.dismiss(animated: true)
                     }
@@ -95,7 +117,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
         self.view.addSubview(activityIndicator)
         
     }
-   
+    
     // Setup Vision request as the request can be reused
     private func setupVision() {
         let textRecognitionRequest = VNRecognizeTextRequest { request, _ in
@@ -126,8 +148,11 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
         if info[.originalImage] != nil {
             // 撮影/選択された画像を取得する
             let image = info[.originalImage] as! UIImage
-
+            let url = info[.imageURL] as! URL
+            print("DEBUG_PRINT: path = \(url)")
             print("DEBUG_PRINT: image = \(image)")
+            
+            imageUrl = url
 
             // PostViewControllerに画面遷移する
             

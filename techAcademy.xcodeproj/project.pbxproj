@@ -21,6 +21,9 @@
 		09358C302702B19100AADA80 /* TabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09358C2F2702B19100AADA80 /* TabBarControllerViewController.swift */; };
 		09358C342702B69700AADA80 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09358C332702B69700AADA80 /* HomeViewController.swift */; };
 		09358C362702EC0800AADA80 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09358C352702EC0800AADA80 /* Property.swift */; };
+		09E67634271E34F700D213A4 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E67632271E34F700D213A4 /* PostTableViewCell.swift */; };
+		09E67635271E34F700D213A4 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E67633271E34F700D213A4 /* PostTableViewCell.xib */; };
+		09E67639271E81A600D213A4 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E67638271E81A600D213A4 /* PostData.swift */; };
 		8CE87C9FC1C3DB490E32E978 /* Pods_techAcademy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 123A6F26171361C135F81A2B /* Pods_techAcademy.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +44,9 @@
 		09358C2F2702B19100AADA80 /* TabBarControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerViewController.swift; sourceTree = "<group>"; };
 		09358C332702B69700AADA80 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		09358C352702EC0800AADA80 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		09E67632271E34F700D213A4 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		09E67633271E34F700D213A4 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		09E67638271E81A600D213A4 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		123A6F26171361C135F81A2B /* Pods_techAcademy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_techAcademy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38586FC40E954D9E6F954D60 /* Pods-techAcademy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-techAcademy.debug.xcconfig"; path = "Target Support Files/Pods-techAcademy/Pods-techAcademy.debug.xcconfig"; sourceTree = "<group>"; };
 		6E8F8EC9C08E0BAC7D9BA78B /* Pods-techAcademy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-techAcademy.release.xcconfig"; path = "Target Support Files/Pods-techAcademy/Pods-techAcademy.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +100,9 @@
 				09358C2F2702B19100AADA80 /* TabBarControllerViewController.swift */,
 				09358C292702B16600AADA80 /* ImageSelectViewController.swift */,
 				090A7C4E2713F5170006710E /* URLRequest+Multipart.swift */,
+				09E67632271E34F700D213A4 /* PostTableViewCell.swift */,
+				09E67633271E34F700D213A4 /* PostTableViewCell.xib */,
+				09E67638271E81A600D213A4 /* PostData.swift */,
 			);
 			path = techAcademy;
 			sourceTree = "<group>";
@@ -178,6 +187,7 @@
 				09358C202702AF1700AADA80 /* LaunchScreen.storyboard in Resources */,
 				09358C1D2702AF1700AADA80 /* Assets.xcassets in Resources */,
 				09358C1B2702AF1500AADA80 /* Main.storyboard in Resources */,
+				09E67635271E34F700D213A4 /* PostTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +244,7 @@
 				09358C362702EC0800AADA80 /* Property.swift in Sources */,
 				09358C2C2702B18400AADA80 /* PostViewController.swift in Sources */,
 				09358C282702B15700AADA80 /* LoginViewController.swift in Sources */,
+				09E67639271E81A600D213A4 /* PostData.swift in Sources */,
 				09358C182702AF1500AADA80 /* ViewController.swift in Sources */,
 				09358C142702AF1500AADA80 /* AppDelegate.swift in Sources */,
 				09358C2A2702B16600AADA80 /* ImageSelectViewController.swift in Sources */,
@@ -241,6 +252,7 @@
 				09358C2E2702B18A00AADA80 /* SettingViewController.swift in Sources */,
 				09358C302702B19100AADA80 /* TabBarControllerViewController.swift in Sources */,
 				09358C162702AF1500AADA80 /* SceneDelegate.swift in Sources */,
+				09E67634271E34F700D213A4 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

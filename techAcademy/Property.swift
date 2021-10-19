@@ -20,16 +20,11 @@ class Property: Object {
     // 画像URL
     @objc dynamic var url = ""
     
-    //文字座標
-    let imageRectPoints =  List<RectPoints>()
+    //文字
+    @objc dynamic var text =  ""
     
     // id をプライマリーキーとして設定
     override static func primaryKey() -> String? {
         return "id"
-    }
-    
-    // 配列用クラス
-    class RectPoints: Object {
-        @objc dynamic var points = ""
     }
 }
