@@ -24,6 +24,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         tableView.dataSource = self
 
+        let taskArray = try! Realm().objects(Property.self).sorted(byKeyPath: "date", ascending: true)
+        print(taskArray.count)
+        for i in 0..<taskArray.count {
+            let postData = PostData(
+                id: String(taskArray[i].id),
+                property: taskArray[i].property,
+                url: taskArray[i].url,
+                date: taskArray[i].date,
+                text: taskArray[i].text)
+            
+            postArray.append(postData)
+        }
         // カスタムセルを登録する
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -34,22 +46,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
         
-        let taskArray = try! Realm().objects(Property.self).sorted(byKeyPath: "date", ascending: true)
-        print(taskArray.count)
-        for i in 1..<taskArray.count + 1 {
-            print(i)
-            let postData = PostData(
-                id: String(taskArray[i-1].id),
-                property: taskArray[i-1].property,
-                url: taskArray[i-1].url,
-                date: taskArray[i-1].date,
-                text: taskArray[i-1].text)
-            
-            print(postData)
-            postArray.append(postData)
-        }
-                // TableViewの表示を更新する
-                self.tableView.reloadData()
+
+        // TableViewの表示を更新する
+        self.tableView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,7 +58,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(postArray.count)
         return postArray.count
     }
 
@@ -67,8 +65,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         cell.setPostData(postArray[indexPath.row])
-        print(postArray[indexPath.row])
-        
+
         return cell
     }
 

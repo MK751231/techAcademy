@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		090A7C4F2713F5170006710E /* URLRequest+Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090A7C4E2713F5170006710E /* URLRequest+Multipart.swift */; };
 		09358C142702AF1500AADA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09358C132702AF1500AADA80 /* AppDelegate.swift */; };
 		09358C162702AF1500AADA80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09358C152702AF1500AADA80 /* SceneDelegate.swift */; };
 		09358C182702AF1500AADA80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09358C172702AF1500AADA80 /* ViewController.swift */; };
@@ -28,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		090A7C4E2713F5170006710E /* URLRequest+Multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Multipart.swift"; sourceTree = "<group>"; };
 		09358C102702AF1500AADA80 /* techAcademy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = techAcademy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09358C132702AF1500AADA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09358C152702AF1500AADA80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 				09358C2D2702B18A00AADA80 /* SettingViewController.swift */,
 				09358C2F2702B19100AADA80 /* TabBarControllerViewController.swift */,
 				09358C292702B16600AADA80 /* ImageSelectViewController.swift */,
-				090A7C4E2713F5170006710E /* URLRequest+Multipart.swift */,
 				09E67632271E34F700D213A4 /* PostTableViewCell.swift */,
 				09E67633271E34F700D213A4 /* PostTableViewCell.xib */,
 				09E67638271E81A600D213A4 /* PostData.swift */,
@@ -240,7 +237,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				090A7C4F2713F5170006710E /* URLRequest+Multipart.swift in Sources */,
 				09358C362702EC0800AADA80 /* Property.swift in Sources */,
 				09358C2C2702B18400AADA80 /* PostViewController.swift in Sources */,
 				09358C282702B15700AADA80 /* LoginViewController.swift in Sources */,

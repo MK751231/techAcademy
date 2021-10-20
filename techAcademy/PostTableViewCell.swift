@@ -30,10 +30,14 @@ class PostTableViewCell: UITableViewCell {
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData) {
         
-        // let imageUrl = postData.url
+        // let imageUrl = postData.url!
+        let imageFileName = postData.url!
+        let imageFullPath = self.fileInDocumentsDirectory(filename: imageFileName)
+        print("DEBUG_PRINT: \(imageFullPath)")
+        let img = loadImageFromPath(path: imageFullPath)
+        self.imageView!.image = img
+        // self.imageView!.image = getImageByUrl(url: imageUrl)
         // 画像の表示
-        // self.showImage(imageView: imageView!, url: "{\(String(describing: imageUrl))}")
-        
         // 日時の表示
         self.dateLabel.text = ""
         if let date = postData.date {
@@ -49,14 +53,23 @@ class PostTableViewCell: UITableViewCell {
         self.textView!.text = postData.text
     }
     
-    private func showImage(imageView: UIImageView, url: String) {
-            let imageUrl = URL(string: url)
-            do {
-                let data = try Data(contentsOf: imageUrl!)
-                let image = UIImage(data: data)
-                imageView.image = image
-            } catch let err {
-                print("Error: \(err.localizedDescription)")
-            }
+    // DocumentディレクトリのfileURLを取得
+    func getDocumentsURL() -> NSURL {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
+        return documentsURL
+    }
+
+    // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
+    func fileInDocumentsDirectory(filename: String) -> String {
+        let fileURL = getDocumentsURL().appendingPathComponent(filename)
+        return fileURL!.path
+    }
+    
+    func loadImageFromPath(path: String) -> UIImage? {
+        let image = UIImage(contentsOfFile: path)
+        if image == nil {
+            print("missing image at: \(path)")
+        }
+        return image
     }
 }

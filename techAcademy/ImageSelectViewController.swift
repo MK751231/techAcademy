@@ -80,9 +80,16 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                         } else {
                             newItem.id = 0
                         }
+                        
+                        let myImageName = "sample.png"
+                        let imagePath = self.fileInDocumentsDirectory(filename: myImageName)
+                        print(imagePath)
 
+                        self.saveImage(image: self.imageView.image!, path: imagePath)
+                        
                         newItem.property = self.textField.text!
-                        newItem.url = self.imageUrl.absoluteString
+                        //newItem.url = self.imageUrl.absoluteString
+                        newItem.url = "sample.png"
                         newItem.date = Date()
                         newItem.text = self.textView.text!
 
@@ -91,6 +98,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                         }
 
                         print(taskArray[newItem.id])
+                        
                         
                         self.dismiss(animated: true)
                     }
@@ -152,7 +160,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
             print("DEBUG_PRINT: path = \(url)")
             print("DEBUG_PRINT: image = \(image)")
             
-            imageUrl = url
+            // imageUrl = url
 
             // PostViewControllerに画面遷移する
             
@@ -181,7 +189,12 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
             if ( self.textView.text != "" ) {
                 cancelButton.isEnabled = true
             }
+            
             imageView.image = image
+
+            // let documentPath = NSHomeDirectory() + "/Documents"
+            // imageUrl = URL(fileURLWithPath: documentPath + "/sample.jpg")
+            
         }
     }
 
@@ -206,6 +219,29 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                  print(error)
             }
         }
+    }
+    
+    // DocumentディレクトリのfileURLを取得
+    func getDocumentsURL() -> NSURL {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
+        return documentsURL
+    }
+
+    // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
+    func fileInDocumentsDirectory(filename: String) -> String {
+        let fileURL = getDocumentsURL().appendingPathComponent(filename)
+        return fileURL!.path
+    }
+    
+    func saveImage (image: UIImage, path: String ) -> Bool {
+        let pngImageData = UIImage.pngData(image)
+        do {
+            try pngImageData()!.write(to: URL(fileURLWithPath: path), options: .atomic)
+        } catch {
+            print(error)
+            return false
+        }
+        return true
     }
 }
 
