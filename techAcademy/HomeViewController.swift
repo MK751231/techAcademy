@@ -46,6 +46,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 text: taskArray[i-1].text)
             
             print(postData)
+            postArray.append(postData)
         }
                 // TableViewの表示を更新する
                 self.tableView.reloadData()
@@ -58,6 +59,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(postArray.count)
         return postArray.count
     }
 

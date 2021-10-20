@@ -30,9 +30,9 @@ class PostTableViewCell: UITableViewCell {
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData) {
         
-        let imageUrl = postData.url
+        // let imageUrl = postData.url
         // 画像の表示
-        self.showImage(imageView: imageView!, url: "{\(String(describing: imageUrl))}")
+        // self.showImage(imageView: imageView!, url: "{\(String(describing: imageUrl))}")
         
         // 日時の表示
         self.dateLabel.text = ""
@@ -45,13 +45,14 @@ class PostTableViewCell: UITableViewCell {
         }
 
         // 文字認識の表示
-        self.textLabel!.text = postData.text
+        //print(postData.text!)
+        self.textView!.text = postData.text
     }
     
     private func showImage(imageView: UIImageView, url: String) {
-            let url = URL(string: url)
+            let imageUrl = URL(string: url)
             do {
-                let data = try Data(contentsOf: url!)
+                let data = try Data(contentsOf: imageUrl!)
                 let image = UIImage(data: data)
                 imageView.image = image
             } catch let err {
