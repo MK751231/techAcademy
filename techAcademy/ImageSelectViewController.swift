@@ -61,7 +61,8 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                     multipartFormData.append(textData!, withName: "upload_txt" , fileName: "test01.txt", mimeType: "text/plain")
                     multipartFormData.append(propertyCode!, withName: "upload_code" , fileName: "code.txt", mimeType: "text/plain")
                 },
-                to: "http://192.168.97.160/test2.php", method: .post
+                // to: "http://192.168.97.160/test2.php", method: .post
+                to: "https://sf.489501.jp/kotei/d2b/test2.php", method: .post
         )
         .response { resp in
             switch resp.result {
@@ -72,7 +73,8 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                         // 正常終了メッセージ表示実装
                         let realm = try! Realm()
 
-                        let taskArray = try! Realm().objects(Property.self).sorted(byKeyPath: "date", ascending: true)
+                        // let taskArray = try! Realm().objects(Property.self).sorted(byKeyPath: "date", ascending: true)
+                        // print(taskArray)
                         let newItem = Property()
 
                         if realm.objects(Property.self).count != 0 {
@@ -80,17 +82,18 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                         } else {
                             newItem.id = 0
                         }
-                        
 
                         newItem.date = Date()
                         let formatter = DateFormatter()
                         formatter.dateFormat = "yyyyMMddHHmmss"
-                        formatter.calendar = Calendar(identifier: .gregorian) // 西暦表示対応
+                        formatter.calendar = Calendar(identifier: .gregorian)
                         let dateString = formatter.string(from: newItem.date)
                         
                         let myImageName = dateString + ".png"
                         let imagePath = self.fileInDocumentsDirectory(filename: myImageName)
-                        self.saveImage(image: self.imageView.image!, path: imagePath)
+                        if self.saveImage(image: self.imageView.image!, path: imagePath) {
+                            print("DEBUG_PRINT: save image.")
+                        }
                         
                         newItem.property = self.textField.text!
                         newItem.url = myImageName
@@ -99,9 +102,6 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                         try! realm.write {
                             realm.add(newItem)
                         }
-
-                        print(taskArray[newItem.id])
-                        
                         
                         self.dismiss(animated: true)
                     }
