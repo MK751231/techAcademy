@@ -81,16 +81,19 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
                             newItem.id = 0
                         }
                         
-                        let myImageName = "sample.png"
-                        let imagePath = self.fileInDocumentsDirectory(filename: myImageName)
-                        print(imagePath)
 
+                        newItem.date = Date()
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "yyyyMMddHHmmss"
+                        formatter.calendar = Calendar(identifier: .gregorian) // 西暦表示対応
+                        let dateString = formatter.string(from: newItem.date)
+                        
+                        let myImageName = dateString + ".png"
+                        let imagePath = self.fileInDocumentsDirectory(filename: myImageName)
                         self.saveImage(image: self.imageView.image!, path: imagePath)
                         
                         newItem.property = self.textField.text!
-                        //newItem.url = self.imageUrl.absoluteString
-                        newItem.url = "sample.png"
-                        newItem.date = Date()
+                        newItem.url = myImageName
                         newItem.text = self.textView.text!
 
                         try! realm.write {
